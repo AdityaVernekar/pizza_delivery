@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/slider.module.css";
 
 function Slider() {
@@ -12,6 +12,15 @@ function Slider() {
       index !== images.length - 1 ? setIndex(index + 1) : setIndex(0);
     }
   };
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     if (index === images.length - 1) {
+  //       setIndex(0);
+  //     } else {
+  //       setIndex(index + 1);
+  //     }
+  //   }, 2000);
+  // }, [index]);
   return (
     <div className={styles.container}>
       <div className={styles.arrowContainer} style={{ left: 0 }} onClick={() => handleArrow("l")}>
