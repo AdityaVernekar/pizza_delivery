@@ -6,4 +6,28 @@
   .link {
     @apply hover:underline font-semibold cursor-pointer text-lg font-thin;
   }
+  .th {
+    @apply px-6 lg:px-8 py-2 text-lg text-gray-800 font-bold;
+  }
+  .td {
+    @apply px-6 lg:px-8 py-2 text-sm text-gray-800 font-semibold;
+  }
+  .status {
+    @apply flex flex-col items-center;
+  }
+  .done {
+    @apply status;
+  }
+  .inProg {
+    @apply status animate-pulse transition-all duration-200 ease-in-out transform;
+  }
+  .undone {
+    @apply status opacity-40;
+  }
+  .undone .checked {
+    @apply opacity-0;
+  }
+  .inProg .checked {
+    @apply opacity-0;
+  }
 }

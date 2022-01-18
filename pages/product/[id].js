@@ -61,8 +61,8 @@ function Product() {
           </div>
         </div>
         <h3 className="text-xl text-gray-700 mb-3 font-semibold">Choose Additional Toppings</h3>
-        <div className="flex flex-col lg:flex-row lg:space-x-5 space-y-3  ">
-          <div className="flex items-center justify-center mt-3">
+        <div className="flex flex-col lg:flex-row lg:space-x-5 space-y-3 ">
+          <div className="flex items-center justify-center ">
             <input type="checkbox" name="double" id="double" className="w-5 h-5 mr-2" />
             <label htmlFor="double">Double Ingredients</label>
           </div>
