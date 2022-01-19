@@ -1,8 +1,9 @@
 import PizzaCard from "./PizzaCard";
 
-function PizzaList() {
+function PizzaList({ pizzaList }) {
   return (
     <div className="flex flex-col items-center p-4">
+      <a href="" name="products"></a>
       <h1 className="text-gray-800 text-5xl font-bold py-2 mt-4 text-center">
         We Sell the Best Pizza In Town!
       </h1>
@@ -14,15 +15,9 @@ function PizzaList() {
         sit! Nesciunt, sint atque.
       </div>
       <div className="lg:flex items-center lg:flex-wrap w-full justify-center px-10 grid grid-cols-1 md:grid-cols-3 place-items-center">
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
-        <PizzaCard />
+        {pizzaList.map((pizzaitem) => (
+          <PizzaCard key={pizzaitem.id} pizza={pizzaitem} />
+        ))}
       </div>
     </div>
   );

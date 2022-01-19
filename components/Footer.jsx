@@ -12,6 +12,7 @@ function Footer() {
                 <p>Oh Yes we Bake Cakes and pudding as well
                     <span className="font-extrabold inline-block">
                     Checkout our restaurants nearby
+                    <a href="bottom" name="bottom"></a>
                         </span></p>
             </div>
             <div className="p-6 space-y-3 text-gray-500">

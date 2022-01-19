@@ -1,6 +1,7 @@
+import axios from "axios";
 import Image from "next/image";
 
-function Order() {
+function Order({ order }) {
   const status = 0;
 
   const statusClass = (index) => {
@@ -13,27 +14,25 @@ function Order() {
       {/* left */}
       <div className="flex-auto">
         <div className="py-5">
-          <table className="grid grid-cols-2 lg:inline">
-            <tr className="flex flex-col lg:flex-row space-y-2">
+          <table className="grid grid-cols-2">
+            <thead className="flex flex-col  space-y-2">
               <th className="th">Order ID</th>
               <th className="th">Customer</th>
-              <th className="th lg:px-[70px]">Address</th>
-              <th className="th lg:pl-[70px]">Total</th>
-            </tr>
-            <tr className="flex flex-col lg:flex-row space-y-2">
-              <td className="td text-red-500 uppercase text-xl">1211</td>
+              <th className="th">Address</th>
+              <th className="th">Total</th>
+            </thead>
+            <tr className="flex flex-col space-y-3">
+              <td className="td text-red-500 uppercase text-xl break-normal">{order._id}</td>
               <td className="td">
                 <span className="font-bold opacity-70 hover:opacity-100 text-lg">
-                  Abhishek Raikar
+                  {order.customer}
                 </span>
               </td>
               <td className="td">
-                <span className="text-sm">Nevsons Building Vasco Goa </span>
+                <span className="text-sm">{order.address}</span>
               </td>
               <td className="td">
-                <span className="text-red-500 font-bold opacity-70 hover:opacity-100 text-xl">
-                  $40.00
-                </span>
+                <span className="text-red-500 hover:font-bold text-2xl">${order.total}</span>
               </td>
             </tr>
           </table>
@@ -79,19 +78,19 @@ function Order() {
           <div>
             <p className="space-x-5">
               <b>Subtotal:</b>
-              <span>$100.00</span>
+              <span>{order.total}</span>
             </p>
           </div>
           <div>
             <p className="space-x-5">
               <b>Discount:</b>
-              <span>$20.00</span>
+              <span>$0.00</span>
             </p>
           </div>
           <div>
             <p className="space-x-5">
               <b>Total:</b>
-              <span>$80.00</span>
+              <span>{order.total}</span>
             </p>
           </div>
           <button
@@ -107,3 +106,13 @@ function Order() {
 }
 
 export default Order;
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+
+  return {
+    props: {
+      order: res.data,
+    },
+  };
+};
