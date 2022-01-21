@@ -39,4 +39,7 @@ input::-webkit-inner-spin-button {
   .inProg .checked {
     @apply opacity-0;
   }
+  .input {
+    @apply p-2 text-gray-800 focus:outline-none border-b border-gray-900;
+  }
 }

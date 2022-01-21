@@ -25,5 +25,11 @@ export default async function handler(req, res) {
   if (method == "PUT") {
   }
   if (method == "DELETE") {
+    try {
+      const pizza = await product.findByIdAndDelete(id);
+      res.status(200).send("The product has been deleted");
+    } catch (error) {
+      res.status(500).json(error);
+    }
   }
 }

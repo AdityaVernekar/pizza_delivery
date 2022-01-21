@@ -1,5 +1,6 @@
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/cartSlice";
@@ -10,6 +11,7 @@ function Product({ pizza }) {
   const [quantity, setQuantity] = useState(1);
   const [extras, setExtras] = useState([]);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const changePrice = (number) => {
     setPrice(price + number);
@@ -34,6 +36,7 @@ function Product({ pizza }) {
 
   const handleClick = () => {
     dispatch(addProduct({ ...pizza, extras, price, quantity }));
+    router.push("/cart");
   };
 
   console.log(quantity);
